@@ -11,20 +11,20 @@ def is_valid_triangle(a, b, c) -> bool:
 
 def classify_triangle(a, b, c) -> str:
     if not is_valid_triangle(a, b, c):
-        return "Not a triangle"
+        return "Invalid"
 
     if a == b == c:
-        return "Equilateral"
+        triangle_type = "Equilateral"
     elif a == b or b == c or a == c:
-        return "Isosceles"
+        triangle_type = "Isosceles"
     else:
-        return "Scalene"
+        triangle_type = "Scalene"
 
     sides = sorted([a, b, c])
 
     if math.isclose(
         sides[0] ** 2 + sides[1] ** 2, sides[2] ** 2, rel_tol = 1e-9
     ):
-        return "Right" + triangle_type
+        return "Right " + triangle_type
 
     return triangle_type
